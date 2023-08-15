@@ -1,0 +1,14 @@
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/LotteryAppApplication.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/payloads/response/MessageResponse.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/service/UserServiceImpl.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/repository/TicketRepository.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/controller/TicketController.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/payloads/request/TicketRequest.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/repository/UserRepository.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/service/UserService.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/controller/UserController.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/models/User.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/service/TicketService.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/payloads/request/UserRequest.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/data/models/Ticket.java
+/Users/oktayaynaci/Downloads/lottery-application-services/src/main/java/com/colendi/lottery/app/service/TicketServiceImpl.java
