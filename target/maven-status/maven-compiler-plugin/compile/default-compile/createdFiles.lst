@@ -1,5 +1,0 @@
-com/colendi/lottery/app/data/repository/TicketRepository.class
-com/colendi/lottery/app/service/TicketService.class
-com/colendi/lottery/app/data/payloads/request/TicketRequest.class
-com/colendi/lottery/app/controller/TicketController.class
-com/colendi/lottery/app/service/TicketServiceImpl.class
