@@ -31,6 +31,10 @@ public class Ticket {
     @Column(name = "createDate")
     private LocalDateTime createDate;
 
+   // @OneToOne(mappedBy = "ticket")
+    //private Status status;
+
+
     public Ticket() {
     }
 
@@ -80,6 +84,23 @@ public class Ticket {
     public void setCreateDateToNow() {
         this.createDate = LocalDateTime.now();
     }
+
+    /*public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        if (status == null) {
+            if (this.status != null) {
+                this.status.setTicket(null);
+            }
+        } else {
+            status.setTicket(this);
+        }
+        this.status = status;
+    }
+
+     */
 
 }
 
