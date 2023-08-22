@@ -24,6 +24,12 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Optional<User>> updateUser( @PathVariable Integer id, @RequestBody UserRequest user) {
+        Optional<User> updatedUser = userService.updateUser(id , user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<User> getUserById (@PathVariable("id") Integer id) {
         User user = userService.getASingleUser(id);

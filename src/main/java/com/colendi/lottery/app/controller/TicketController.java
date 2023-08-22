@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 ;
 
@@ -24,6 +25,22 @@ public class TicketController {
         MessageResponse newTicket = ticketService.createTicket(ticket);
         return new ResponseEntity<>(newTicket, HttpStatus.CREATED);
     }
+
+    @PutMapping("/update/{ticketId}")
+    public ResponseEntity<String> updateTicket(@PathVariable UUID ticketId, @RequestBody TicketRequest ticket) {
+        try {
+            Optional<Ticket> updatedTicket = ticketService.updateTicket(ticketId, ticket);
+
+            if (updatedTicket.isPresent()) {
+                return new ResponseEntity<>("Ticket updated successfully", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Ticket not found", HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>("An error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     @GetMapping("/find/{id}")
     public ResponseEntity<Ticket> getUserById (@PathVariable("id") UUID id) {
@@ -48,5 +65,6 @@ public class TicketController {
         List<Ticket> tickets = ticketService.getASingleTicketByUserId(Integer.parseInt(userId));
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
+
 
 }

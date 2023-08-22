@@ -10,14 +10,14 @@ import java.util.UUID;
 
 
 @Repository
-public interface TicketRepository extends JpaRepository<Ticket, UUID> {
+public interface TicketRepository extends JpaRepository<Ticket, String> {
 
     List<Ticket> findByUserId(Integer userId);
 
     Ticket save(Ticket ticket);
 
-    @Query("SELECT t1.id, t1.firstName, t1.lastName, t1.email, t2.ticketId, t2.userId " +
-            "FROM Table1 t1 INNER JOIN Table2 t2 ON t1.id = t2.userId")
-    List<Object[]> customJoinQuery();
+    @Query("SELECT u.id as user_id, u.email, u.firstName, u.lastName, t.id as ticket_id, t.userId " +
+            "FROM User u LEFT JOIN Ticket t ON t.userId = u.id WHERE u.id = :userId")
+    List<Object[]> findUserById(Integer userId);
 
 }

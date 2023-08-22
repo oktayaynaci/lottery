@@ -7,6 +7,7 @@ import com.colendi.lottery.app.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,6 +23,22 @@ public class UserServiceImpl implements UserService {
         userRepository.save(newUser);
         return new MessageResponse("New user created successfully");
     }
+
+    @Override
+    public Optional<User> updateUser(Integer userId, UserRequest userRequest) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setFirstName(userRequest.getFirstName());
+            user.setLastName(userRequest.getLastName());
+            user.setEmail(userRequest.getEmail());
+            userRepository.save(user);
+            return Optional.of(user);
+        } else {
+            return Optional.empty();
+        }
+    }
+
     @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
