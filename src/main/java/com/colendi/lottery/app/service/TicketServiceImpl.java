@@ -1,8 +1,10 @@
 package com.colendi.lottery.app.service;
 
 import com.colendi.lottery.app.data.models.Ticket;
+import com.colendi.lottery.app.data.models.TicketStatus;
 import com.colendi.lottery.app.data.payloads.request.TicketRequest;
 import com.colendi.lottery.app.data.payloads.response.MessageResponse;
+import com.colendi.lottery.app.data.repository.StatusRepository;
 import com.colendi.lottery.app.data.repository.TicketRepository;
 import com.colendi.lottery.app.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,8 @@ public class TicketServiceImpl implements TicketService {
             newTicket.setCreateDateToNow();
 
             ticketRepository.save(newTicket);
+
+
             return new MessageResponse("New ticket created successfully");
         } else {
             return new MessageResponse("User not found, ticket could not be created.");

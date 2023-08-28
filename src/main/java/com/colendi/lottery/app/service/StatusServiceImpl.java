@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -25,6 +27,12 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public Status createStatusForTicket(UUID ticketId, TicketStatus ticketStatus) {
+        List<Status> existingWinStatuses = statusRepository.findByTicketStatus(TicketStatus.WON);
+
+        if (ticketStatus == TicketStatus.WON && !existingWinStatuses.isEmpty()) {
+            throw new RuntimeException("A ticket already has WON status");
+        }
+
         Ticket ticket = ticketRepository.findById(String.valueOf(ticketId))
                 .orElseThrow(() -> new RuntimeException("Ticket not found"));
 
@@ -35,5 +43,5 @@ public class StatusServiceImpl implements StatusService {
 
         return statusRepository.save(status);
     }
-}
 
+}

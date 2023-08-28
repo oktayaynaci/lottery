@@ -4,6 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import jakarta.persistence.Column;
 
+
 public class UserRequest {
         @NotBlank
         @Column(nullable = false)

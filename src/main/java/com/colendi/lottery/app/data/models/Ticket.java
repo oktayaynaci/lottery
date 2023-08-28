@@ -1,11 +1,20 @@
 package com.colendi.lottery.app.data.models;
 
-import jakarta.persistence.*;
+import com.colendi.lottery.app.data.models.Status;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
+@Data
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Ticket {
 
     @Id
@@ -31,88 +40,11 @@ public class Ticket {
     @Column(name = "createDate")
     private LocalDateTime createDate;
 
-   // @OneToOne(mappedBy = "ticket")
-    //private Status status;
+    @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Status> statuses = new ArrayList<>();
 
-
-    public Ticket() {
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLotteryName() {
-        return lotteryName;
-    }
-
-    public void setLotteryName(String lotteryName) {
-        this.lotteryName = lotteryName;
-    }
-
-    public Integer getPrice() {return price;}
-
-    public void setPrice(Integer price) {this.price = price;}
-
-    public LocalDateTime getLotteryStartDate() {
-        return lotteryStartDate;
-    }
-
-    public void setLotteryStartDate(LocalDateTime lotteryStartDate) {
-        this.lotteryStartDate = lotteryStartDate;
-    }
-
-    public LocalDateTime getLotteryEndDate() {
-        return lotteryEndDate;
-    }
-
-    public void setLotteryEndDate(LocalDateTime lotteryEndDate) {
-        this.lotteryEndDate = lotteryEndDate;
-    }
     public void setCreateDateToNow() {
         this.createDate = LocalDateTime.now();
     }
 
-    /*public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        if (status == null) {
-            if (this.status != null) {
-                this.status.setTicket(null);
-            }
-        } else {
-            status.setTicket(this);
-        }
-        this.status = status;
-    }
-
-     */
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

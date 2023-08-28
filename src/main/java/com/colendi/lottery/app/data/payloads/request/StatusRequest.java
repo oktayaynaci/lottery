@@ -7,7 +7,6 @@ import java.util.UUID;
 public class StatusRequest {
     private TicketStatus ticketStatus;
 
-
     public TicketStatus getTicketStatus() {
         return ticketStatus;
     }
@@ -16,4 +15,3 @@ public class StatusRequest {
         this.ticketStatus = ticketStatus;
     }
 }
-
